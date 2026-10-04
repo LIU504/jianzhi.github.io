@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>从纸张到屏幕：中国剪纸的数字保存与跨文化传播</title>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box;font-family:"SimSun",serif;}
+        :root{
+            --red:#a61c1c;
+            --card-bg:#fffbf2;
+        }
+        /*导航栏固定顶部*/
+        nav{
+            background-color:var(--red);
+            position:sticky;
+            top:0;
+            z-index:99;
+        }
+        .nav-wrap{
+            max-width:1200px;
+            margin:0 auto;
+            display:flex;
+            flex-wrap:wrap;
+            justify-content:center;
+        }
+        .nav-wrap a{
+            color:#fff;
+            text-decoration:none;
+            padding:12px 16px;
+            display:block;
+        }
+        .nav-wrap a:hover{
+            background:rgba(255,255,255,0.2);
+        }
+        /*首页封面*/
+        .hero{
+            min-height:85vh;
+            background-color:#781616;
+            display:flex;
+            flex-direction:column;
+            align-items:center;
+            justify-content:center;
+            color:white;
+            text-align:center;
+            padding:30px;
+        }
+        .hero h1{
+            font-size:2.3rem;
+            margin-bottom:14px;
+        }
+        .container{
+            max-width:1200px;
+            margin:0 auto;
+            padding:40px 20px;
+        }
+        /*档案卡片样式*/
+        .archive-card{
+            background:var(--card-bg);
+            border:1px solid #ddcdb8;
+            border-radius:10px;
+            padding:22px;
+            margin-bottom:24px;
+        }
+        .card-image-placeholder{
+            width:100%;
+            height:270px;
+            background:#e9dfcf;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            color:#666;
+            margin-bottom:12px;
+        }
+        /*核心：所有内容面板默认隐藏 */
+        .panel{
+            display:none;
+        }
+        /*只有active的面板才显示*/
+        .panel.active{
+            display:block;
+        }
+    </style>
+</head>
+<body>
+<!-- 顶部导航，永久固定 -->
+<nav>
+    <div class="nav-wrap">
+        <a data-target="panel-home">首页</a>
+        <a data-target="panel-about">关于本档案</a>
+        <a data-target="panel-works">作品档案</a>
+        <a data-target="panel-process">制作与数字记录</a>
+        <a data-target="panel-cross">跨文化传播</a>
+        <a data-target="panel-findings">研究发现</a>
+        <a data-target="panel-source">资料来源</a>
+    </div>
+</nav>
+
+<!-- 【首页面板：默认打开】 -->
+<div id="panel-home" class="panel active">
+    <div class="hero">
+        <h1>从纸张到屏幕：中国剪纸的数字保存与跨文化传播</h1>
+        <p>以春节剪纸为例 · 数字档案项目</p>
+    </div>
+    <div class="container">
+        <h2>关于本档案</h2>
+        <p>【待成员1提交文字：项目背景、研究问题、研究范围、档案建立意义】</p>
+    </div>
+</div>
+
+<!-- 【关于本档案面板】 -->
+<div id="panel-about" class="panel">
+    <div class="container">
+        <h2>关于本档案</h2>
+        <p>【待成员1提交文字：项目背景、研究问题、研究范围、档案建立意义】</p>
+    </div>
+</div>
+
+<!--【作品档案面板】 -->
+<div id="panel-works" class="panel">
+    <div class="container">
+        <h2>作品档案</h2>
+        <h3>福字剪纸</h3>
+        <div class="archive-card">
+            <div class="card-image-placeholder">【此处替换：福字作品图片】</div>
+            <h4>作品名称：待填写</h4>
+            <p>作品简介：待填写</p>
+            <p class="source-note">来源信息：待填写（作者、机构、原始链接）</p>
+        </div>
+        <h3>生肖剪纸</h3>
+        <div class="archive-card">
+            <div class="card-image-placeholder">【此处替换：生肖剪纸作品图片】</div>
+            <h4>作品名称：待填写</h4>
+            <p>作品简介：待填写</p>
+            <p class="source-note">来源信息：待填写（作者、机构、原始链接）</p>
+        </div>
+    </div>
+</div>
+
+<!--【制作与数字记录面板】 -->
+<div id="panel-process" class="panel">
+    <div class="container">
+        <h2>制作与数字记录</h2>
+        <p>【待成员3提交内容】</p>
+    </div>
+</div>
+
+<!--【跨文化传播面板】 -->
+<div id="panel-cross" class="panel">
+    <div class="container">
+        <h2>跨文化传播</h2>
+        <p>【待成员4提交内容】</p>
+    </div>
+</div>
+
+<!--【研究发现面板】 -->
+<div id="panel-findings" class="panel">
+    <div class="container">
+        <h2>研究发现</h2>
+        <p>【待成员6提交内容】</p>
+    </div>
+</div>
+
+<!--【资料来源面板】 -->
+<div id="panel-source" class="panel">
+    <div class="container">
+        <h2>资料来源</h2>
+        <p>【待成员6提交APA7参考文献】</p>
+    </div>
+</div>
+
+<script>
+// 切换面板JS，不需要修改
+const navLinks = document.querySelectorAll(".nav-wrap a");
+const panels = document.querySelectorAll(".panel");
+
+navLinks.forEach(link=>{
+    link.onclick = function(e){
+        e.preventDefault();
+        const targetId = this.getAttribute("data-target");
+        panels.forEach(p=>p.classList.remove("active"));
+        document.getElementById(targetId).classList.add("active");
+        window.scrollTo(0,0); //切换面板自动滚回页面顶部
+    }
+})
+</script>
+
+</body>
+</html>
